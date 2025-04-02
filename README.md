@@ -41,7 +41,7 @@ Before we can execute a traffic examination in Microsoft Azure, we must create a
 <img src="https://i.imgur.com/UHtW98t.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Projects we do in Azure will live inside some kind of resource group which is why we created one in the first step. Our next step is to create a Resource Group name (RG-Network-Activities) that identifies closely to the kind of work we are doing, this project will be stored and accesible for edit etc under this name. Now we create a container our virtual network (Lab2-Vnet) where Both Virtual Machines (Linux-VM, MyLowCostVM ,as shown above) are created and stored together to live in the same network.
+Projects we do in Azure will live inside a resource group which we have created here in the first step. Our next step is to create a Resource Group name (RG-Network-Activities) this identifies more to the kind of work we will be doing. This project will be stored and available for edit under this name. Now we create a container a virtual network (Lab2-Vnet) where Both Virtual Machines from earlier (Linux-VM, MyLowCostVM as shown above) were created under the same network.
 </p>
 <br />
 
@@ -49,7 +49,7 @@ Projects we do in Azure will live inside some kind of resource group which is wh
 <img src="https://i.imgur.com/v2fac3x.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now that we have created a small network with two Virtual Machines we can start prepping for a Traffic examination. For this we will have to know the Public IP address of atleast one of the Virtual machines, which in this example i chose the windows machine (20.3.253.44) and the linux machine's private IP address we will later ping in Powershell to test connection.
+Now that we have created a small network with two Virtual Machines we can start prepping for a Traffic examination. For this we will have to take note of the Public IP address of atleast one of the Virtual machines, which in this example i chose the windows machine (20.3.253.44) and we will use the linux machine's private IP address that we will later ping in Powershell to test connection.
 </p>
 <br />
 
@@ -57,7 +57,7 @@ Now that we have created a small network with two Virtual Machines we can start 
 <img src="https://i.imgur.com/emyVpLH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In this ilustration we have accessed the Windows Virtual Machine by means of the RDP (Remote Desktop Protocol). You will notice the Public IP address on the top left (20.3.253.44) which will help you rememeber in which system you are working from. Important to note is that in Microsoft azure you will need to rememeber login name and password you set up for each VM in order for RDP to work.
+In this ilustration we have accessed the Windows Virtual Machine by means of the RDP (Remote Desktop Protocol). You will notice the Public IP address on the top left (20.3.253.44) which determines from which in which virtual machine we are on. It is Important to note that in Microsoft azure the login name and password we set for each VM are important to store safely to log in when RDP is used.
 </p>
 <br />
 
@@ -73,7 +73,7 @@ To see Packet Traffic between our VMs we will need to download Wireshark in our 
 <img src="https://i.imgur.com/3k24I58.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Finally we get to see traffic through wireshark during a ping performed in powershell in the Windows VM. As you can see we find the Linux VM's private IP Address (10.0.0.5) to ping, while in the wireshark Analyser we specifically look for only ICMP traffic, ICMP stands for Internet Control Message Protocol. It's a set of rules that network devices use to communicate errors and operational information when sending data over a network. Successfully answering for all the request and replies with 0% packet loss which is what you want to see when creating a network.
+In the last step Wireshark is opened along with powershell to start looking at traffic when we start pinging addreses. As you can see we find the Linux VM's private IP Address (10.0.0.5) to ping, while in the wireshark Analyser we specifically look for only ICMP traffic, ICMP stands for Internet Control Message Protocol. This traffic is an essential part of network management and troubleshooting. Understanding and looking into ICMP traffic can help network administrators, security professionals, and anyone managing a network system identify potential issues or threats . In powershell we see how successfully all the request and replies with 0% packet loss appears which is what you want to see when asking for feedback from your Virtual Machines.
 </p>
 <br />
 
