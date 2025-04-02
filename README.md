@@ -33,7 +33,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src="https://i.imgur.com/SKFAVNj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Before we can execute a traffic examination in Microsoft Azure, we must create a virtual network along with both a Linux and Windows Virtual Machines. For this we must create our first resource group (Lab-Test-1) in Microsoft Azure as illustrated above. In this example we are using the free 200$ incentative Azure credits for First time users which is an awesome perk for anyone getting started.
+Before we can execute a traffic examination in Microsoft Azure, we must create a virtual network along with both a Linux and Windows Virtual Machine each. For this we must create our first resource group (Lab-Test-1) in Microsoft Azure as illustrated above. In this example we are using the free 200$ incentative Azure credits for First time users which is an awesome perk for anyone getting started.
 </p>
 <br />
 
