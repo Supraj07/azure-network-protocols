@@ -33,7 +33,7 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 <img src="https://i.imgur.com/SKFAVNj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Before we can execute a traffic examination in Microsoft Azure, we must create a virtual network along with both a Linux and Windows Virtual Machine each. For this we must create our first resource group (Lab-Test-1) in Microsoft Azure as illustrated above. In this example we are using the free 200$ incentative Azure credits for First time users which is an awesome perk for anyone getting started.
+Before conducting a traffic examination in Microsoft Azure, it’s important to first set up the necessary environment. The process begins by creating a resource group named "Lab-Test-1", which acts as a container to organize and manage all related resources for the lab. Within this resource group, you’ll need to create a virtual network (VNet) that allows communication between different resources, along with one Linux Virtual Machine and one Windows Virtual Machine. These virtual machines will serve as the endpoints for testing and analyzing traffic. This setup uses the $200 in free Azure credits available to first-time users—a valuable perk that allows beginners to explore and experiment within the Azure platform at no cost.
 </p>
 <br />
 
@@ -41,7 +41,7 @@ Before we can execute a traffic examination in Microsoft Azure, we must create a
 <img src="https://i.imgur.com/UHtW98t.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Projects we do in Azure will live inside a resource group which we have created here in the first step. Our next step is to create a Resource Group name (RG-Network-Activities) this identifies more to the kind of work we will be doing. This project will be stored and available for edit under this name. Now we create a container a virtual network (Lab2-Vnet) where Both Virtual Machines from earlier (Linux-VM, MyLowCostVM as shown above) were created under the same network.
+Projects we create in Azure are organized within resource groups, which act as logical containers for related resources. In this step, we create a new resource group named "RG-Network-Activities" to better reflect the type of work involved in this project. This name helps keep our activities clearly labeled and organized, making future management and edits easier. Once the resource group is created, we set up a virtual network (Lab2-Vnet) to serve as a shared network environment. Both virtual machines from the earlier step—Linux-VM and MyLowCostVM—are placed within this same network, allowing them to communicate with each other and participate in the traffic examination under a unified infrastructure
 </p>
 <br />
 
@@ -49,7 +49,7 @@ Projects we do in Azure will live inside a resource group which we have created 
 <img src="https://i.imgur.com/v2fac3x.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Now that we have created a small network with two Virtual Machines we can start prepping for a Traffic examination. For this we will have to take note of the Public IP address of atleast one of the Virtual machines, which in this example i chose the windows machine (20.3.253.44) and we will use the linux machine's private IP address that we will later ping in Powershell to test connection.
+Now that we’ve created a small network with two virtual machines, we can begin preparing for a traffic examination. To do this, we need to identify the public IP address of at least one of the virtual machines. In this example, we’ll use the Windows virtual machine’s public IP address: 20.3.253.44. Additionally, we’ll locate the private IP address of the Linux virtual machine. This private IP will be used later to test the connection by sending a ping from the Windows machine using PowerShell. This setup allows us to verify network communication between the two machines within our Azure environment.
 </p>
 <br />
 
@@ -57,7 +57,7 @@ Now that we have created a small network with two Virtual Machines we can start 
 <img src="https://i.imgur.com/emyVpLH.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In this ilustration we have accessed the Windows Virtual Machine by means of the RDP (Remote Desktop Protocol). You will notice the Public IP address on the top left (20.3.253.44) which determines from which in which virtual machine we are on. It is Important to note that in Microsoft azure the login name and password we set for each VM are important to store safely to log in when RDP is used.
+In this illustration, we have accessed the Windows Virtual Machine using RDP (Remote Desktop Protocol). You can confirm that you are connected to the correct virtual machine by checking the public IP address displayed in the top left corner—in this case, 20.3.253.44. This helps verify which machine you are working on. It’s important to remember that in Microsoft Azure, the username and password you set during the creation of each virtual machine are essential for accessing them via RDP. Be sure to store these credentials securely, as they are required each time you connect to the virtual machine remotely.
 </p>
 <br />
 
@@ -65,7 +65,7 @@ In this ilustration we have accessed the Windows Virtual Machine by means of the
 <img src="https://i.imgur.com/PFKKGoA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-To see Packet Traffic between our VMs we will need to download Wireshark in our Windows VM, after download and agreeing to default settings it should look as screen shot above.
+To capture and analyze packet traffic between our virtual machines, the first step is to install Wireshark on the Windows VM. After logging in via RDP, open your browser, download the latest Wireshark installer from the official website, and run it. When prompted, accept the default installation options these include the WinPcap or Npcap network driver necessary for packet capture. Once the installation completes, launch Wireshark: you should see the familiar interface (as shown in the screenshot above), listing all network adapters available for monitoring. From here, you’re ready to begin capturing live traffic between your Linux and Windows VMs.
 </p>
 <br />
 
@@ -73,7 +73,7 @@ To see Packet Traffic between our VMs we will need to download Wireshark in our 
 <img src="https://i.imgur.com/3k24I58.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-In the last step Wireshark is opened along with powershell to start looking at traffic when we start pinging addreses. As you can see we find the Linux VM's private IP Address (10.0.0.5) to ping, while in the wireshark Analyser we specifically look for only ICMP traffic, ICMP stands for Internet Control Message Protocol. This traffic is an essential part of network management and troubleshooting. Understanding and looking into ICMP traffic can help network administrators, security professionals, and anyone managing a network system identify potential issues or threats . In powershell we see how successfully all the request and replies with 0% packet loss appears which is what you want to see when asking for feedback from your Virtual Machines.
+In the final step, we open both Wireshark and PowerShell on the Windows Virtual Machine to begin observing network traffic in real time. Using PowerShell, we ping the Linux VM’s private IP address (10.0.0.5) to generate network activity. In Wireshark, we apply a filter to display only ICMP traffic, which stands for Internet Control Message Protocol. ICMP is a crucial protocol used for network diagnostics and troubleshooting—it helps administrators and security professionals monitor connectivity and detect potential issues. As the pings are sent, we can see in PowerShell that all requests receive successful replies with 0% packet loss, which indicates strong and reliable communication between the virtual machines. This confirms that our network setup is functioning correctly.
 </p>
 <br />
 
